@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#17130f">
-  <title>宫墙一梦｜甄嬛传互动文字游戏 Demo</title>
+  <title>宫墙一梦｜甄嬛传互动文字游戏</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
     <section id="title-screen" class="screen title-screen active" aria-label="游戏首页">
       <div class="title-mist"></div>
       <div class="seal">宫</div>
-      <p class="eyebrow">粉丝向互动同人 Demo</p>
+      <p class="eyebrow">甄嬛传 · 平行副本</p>
       <h1>宫墙一梦</h1>
       <p class="subtitle">如果你是甄嬛，能活到第几集？</p>
       <div class="palace-silhouette" aria-hidden="true">
@@ -35,17 +35,30 @@
       </header>
 
       <div id="scene" class="scene scene-gate">
+        <div class="scene-aura aura-a"></div>
+        <div class="scene-aura aura-b"></div>
         <div class="moon"></div>
         <div class="roof roof-back"></div>
         <div class="roof roof-front"></div>
         <div class="lantern lantern-left"></div>
         <div class="lantern lantern-right"></div>
+        <div class="falling-petal petal-a"></div>
+        <div class="falling-petal petal-b"></div>
+        <div class="falling-petal petal-c"></div>
+        <div class="scene-vignette"></div>
         <div id="portrait" class="portrait portrait-zhenhuan mood-calm" aria-label="当前角色立绘">
+          <div class="portrait-glow"></div>
           <div class="hairpin"></div>
-          <div class="head"></div>
+          <div class="head">
+            <span class="face face-left"></span>
+            <span class="face face-right"></span>
+          </div>
+          <div class="neck"></div>
           <div class="body"></div>
           <div class="sleeve sleeve-left"></div>
           <div class="sleeve sleeve-right"></div>
+          <div class="ornament ornament-left"></div>
+          <div class="ornament ornament-right"></div>
         </div>
         <div id="effect-toast" class="effect-toast"></div>
       </div>
@@ -59,6 +72,7 @@
         <div id="choices" class="choices"></div>
         <button id="next-btn" class="next-btn hidden">继续</button>
       </section>
+      <button id="home-btn-fallback" class="home-fallback" aria-label="返回首页">宫</button>
     </section>
 
     <aside id="stats-panel" class="stats-panel" aria-hidden="true">

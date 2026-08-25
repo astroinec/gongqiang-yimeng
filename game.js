@@ -620,6 +620,7 @@ el("ending-gallery-btn").onclick = renderGallery;
 el("gallery-home-btn").onclick = () => { updateContinueButton(); showScreen("title-screen"); };
 el("restart-btn").onclick = startNewGame;
 el("home-btn").onclick = () => { saveGame(); updateContinueButton(); showScreen("title-screen"); };
+el("home-btn-fallback").onclick = () => { saveGame(); updateContinueButton(); showScreen("title-screen"); };
 el("stats-btn").onclick = () => { renderRumors(); el("stats-panel").classList.add("open"); el("stats-panel").setAttribute("aria-hidden", "false"); };
 document.querySelectorAll("[data-close='stats']").forEach(element => {
   element.onclick = () => {
