@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17130f">
+  <title>宫墙一梦｜甄嬛传互动文字游戏 Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="app" class="app-shell">
+    <section id="title-screen" class="screen title-screen active" aria-label="游戏首页">
+      <div class="title-mist"></div>
+      <div class="seal">宫</div>
+      <p class="eyebrow">粉丝向互动同人 Demo</p>
+      <h1>宫墙一梦</h1>
+      <p class="subtitle">如果你是甄嬛，能活到第几集？</p>
+      <div class="palace-silhouette" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <button id="start-btn" class="primary-btn">入宫应选</button>
+      <button id="continue-btn" class="ghost-btn hidden">继续前缘</button>
+      <button id="gallery-btn" class="text-btn">命运图鉴 <b id="gallery-count">0 / 6</b> · 成就 <b id="achievement-count">0 / 12</b></button>
+      <p class="disclaimer">你的选择，会在宫墙里留下回声</p>
+    </section>
+
+    <section id="game-screen" class="screen game-screen" aria-label="游戏进行中">
+      <header class="game-header">
+        <button id="home-btn" class="icon-btn" aria-label="返回首页">⌂</button>
+        <div class="chapter-meta">
+          <span id="chapter-name">第一章</span>
+          <div class="progress-track"><i id="progress-bar"></i></div>
+        </div>
+        <button id="stats-btn" class="icon-btn" aria-label="查看宫中风闻">闻</button>
+      </header>
+
+      <div id="scene" class="scene scene-gate">
+        <div class="moon"></div>
+        <div class="roof roof-back"></div>
+        <div class="roof roof-front"></div>
+        <div class="lantern lantern-left"></div>
+        <div class="lantern lantern-right"></div>
+        <div id="portrait" class="portrait portrait-zhenhuan mood-calm" aria-label="当前角色立绘">
+          <div class="hairpin"></div>
+          <div class="head"></div>
+          <div class="body"></div>
+          <div class="sleeve sleeve-left"></div>
+          <div class="sleeve sleeve-right"></div>
+        </div>
+        <div id="effect-toast" class="effect-toast"></div>
+      </div>
+
+      <section class="dialogue-panel">
+        <div class="speaker-row">
+          <span id="speaker" class="speaker">旁白</span>
+          <button id="speed-btn" class="speed-btn">逐字</button>
+        </div>
+        <p id="dialogue" class="dialogue"></p>
+        <div id="choices" class="choices"></div>
+        <button id="next-btn" class="next-btn hidden">继续</button>
+      </section>
+    </section>
+
+    <aside id="stats-panel" class="stats-panel" aria-hidden="true">
+      <div class="panel-backdrop" data-close="stats"></div>
+      <div class="panel-card">
+        <div class="panel-title-row">
+          <h2>宫中风闻</h2>
+          <button class="close-btn" data-close="stats">×</button>
+        </div>
+        <div id="stats-list" class="stats-list"></div>
+        <p class="stats-tip">风闻未必是真相。人心与代价，都藏在没有写出的地方。</p>
+      </div>
+    </aside>
+
+    <section id="ending-screen" class="screen ending-screen" aria-label="游戏结局">
+      <div id="ending-card" class="ending-card">
+        <p class="ending-kicker">你解锁了结局</p>
+        <div id="ending-seal" class="ending-seal">终</div>
+        <h2 id="ending-title">宫墙之外</h2>
+        <p id="ending-desc"></p>
+        <div id="ending-epilogue" class="ending-epilogue"></div>
+        <div id="ending-achievements" class="ending-achievements"></div>
+        <p id="ending-progress" class="ending-progress"></p>
+      </div>
+      <button id="restart-btn" class="primary-btn">再入宫门</button>
+      <button id="ending-gallery-btn" class="ghost-btn">查看结局图鉴</button>
+    </section>
+
+    <section id="gallery-screen" class="screen gallery-screen" aria-label="命运与成就图鉴">
+      <header class="gallery-header">
+        <button id="gallery-home-btn" class="icon-btn">←</button>
+        <h2>命运与成就</h2>
+        <span id="gallery-header-count">0 / 6</span>
+      </header>
+      <h3 class="gallery-section-title">命运图鉴</h3>
+      <div id="gallery-grid" class="gallery-grid"></div>
+      <h3 class="gallery-section-title">宫墙轶闻</h3>
+      <div id="achievement-grid" class="achievement-grid"></div>
+    </section>
+  </main>
+
+  <script src="assets/manifest.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
