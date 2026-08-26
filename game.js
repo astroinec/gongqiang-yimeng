@@ -297,14 +297,30 @@ function showScreen(id) {
   screens.forEach(screen => screen.classList.toggle("active", screen.id === id));
 }
 
+const memoryStore = {};
+const storage = {
+  get(key) {
+    try { return localStorage.getItem(key); }
+    catch (_) { return key in memoryStore ? memoryStore[key] : null; }
+  },
+  set(key, value) {
+    try { localStorage.setItem(key, value); }
+    catch (_) { memoryStore[key] = value; }
+  },
+  remove(key) {
+    try { localStorage.removeItem(key); }
+    catch (_) { delete memoryStore[key]; }
+  }
+};
+
 function saveGame() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  storage.set(STORAGE_KEY, JSON.stringify(state));
   updateContinueButton();
 }
 
 function loadGame() {
   try {
-    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    const raw = JSON.parse(storage.get(STORAGE_KEY));
     if (raw && raw.current && story[raw.current]) state = raw;
   } catch (_) {
     state = initialState();
@@ -312,19 +328,19 @@ function loadGame() {
 }
 
 function storedList(key) {
-  try { return JSON.parse(localStorage.getItem(key)) || []; }
+  try { return JSON.parse(storage.get(key)) || []; }
   catch (_) { return []; }
 }
 
 function unlockStored(key, value) {
   const list = storedList(key);
   if (!list.includes(value)) list.push(value);
-  localStorage.setItem(key, JSON.stringify(list));
+  storage.set(key, JSON.stringify(list));
   return list;
 }
 
 function updateContinueButton() {
-  el("continue-btn").classList.toggle("hidden", !localStorage.getItem(STORAGE_KEY));
+  el("continue-btn").classList.toggle("hidden", !storage.get(STORAGE_KEY));
   el("gallery-count").textContent = `${storedList(GALLERY_KEY).length} / ${Object.keys(endings).length}`;
   el("achievement-count").textContent = `${storedList(ACHIEVEMENT_KEY).length} / ${Object.keys(achievements).length}`;
 }
@@ -551,7 +567,7 @@ function showEnding(key) {
   const identity = endingIdentity(key);
   const unlocked = unlockStored(GALLERY_KEY, key);
   const newAchievements = evaluateAchievements({ ending: key, atEnding: true, unlockedEndings: unlocked.length });
-  localStorage.removeItem(STORAGE_KEY);
+  storage.remove(STORAGE_KEY);
   el("ending-seal").textContent = identity.seal;
   el("ending-title").textContent = identity.title;
   el("ending-desc").textContent = identity.desc;
