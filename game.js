@@ -86,7 +86,7 @@ const achievements = {
 const story = {
   intro_1: node("序章 · 宫门", 2, "gate", "旁白", "zhenhuan", "calm", "雍正元年，选秀的名册送入宫中。你本无意争宠，只盼平安度日。可宫门一开，每一次沉默与开口，都将成为他日的因果。", "intro_2"),
   intro_2: {
-    chapter: "第一章 · 初入宫门", progress: 6, scene: "gate", speaker: "嬷嬷", portrait: "empress", mood: "calm",
+    chapter: "第一章 · 初入宫门", progress: 6, scene: "gate", speaker: "嬷嬷", portrait: "momo", mood: "calm",
     text: "殿前问话将至。众人都在打量你的衣饰与神情。嬷嬷低声提醒：宫里最忌锋芒毕露，也最怕无人记得。",
     choices: [
       choice("素衣淡妆，只求落选", "你避开了多数人的目光，却仍有人记住了你。", { favor: -1, strategy: 1, heart: 1 }, { emperor: 1 }, ["kept_low"], ["retreat"], "selection_low"),
@@ -107,7 +107,7 @@ const story = {
     ]
   },
   xia_conflict: {
-    chapter: "第二章 · 宫门第一课", progress: 19, scene: "gate", speaker: "夏冬春", portrait: "huafei", mood: "angry",
+    chapter: "第二章 · 宫门第一课", progress: 19, scene: "gate", speaker: "夏冬春", portrait: "xiadongchun", mood: "angry",
     text: "御花园里，夏冬春拦住陵容，讥她出身寒微。华妃的仪仗正从长街尽头逼近，所有人都在等着看谁先犯错。",
     choices: [
       choice("拉住陵容，低声劝她先退", "陵容退到你身后。她没有道谢，却把这份情记得很深。", { strategy: 1, heart: 1 }, { lingrong: 2, huafei: 1 }, ["protected_lingrong"], ["help", "retreat"], "xia_after"),
@@ -129,7 +129,7 @@ const story = {
   snow_hidden: node("第三章 · 雪夜初遇", 31, "snow", "神秘男子", "emperor", "calm", "你借诗掩去身份。他没有追问，只说来日若再听见这句诗，必会认得旧人。", "yuying_1"),
   snow_test: node("第三章 · 雪夜初遇", 31, "snow", "神秘男子", "emperor", "calm", "你们都没有交代真正的身份。雪落在梅枝上，这场相遇从一开始便藏着试探。", "yuying_1"),
   yuying_1: {
-    chapter: "第四章 · 借来的荣宠", progress: 36, scene: "snow", speaker: "余莺儿", portrait: "lingrong", mood: "calm",
+    chapter: "第四章 · 借来的荣宠", progress: 36, scene: "snow", speaker: "余莺儿", portrait: "yuyinger", mood: "calm",
     text: "数日后，一个宫女凭借倚梅园的诗句骤然得宠。她在廊下唱着你说过的话，甚至连雪夜里的细节都分毫不差。",
     choices: [
       choice("立刻揭穿她冒名邀宠", "真相传得很快。你夺回了名字，也让更多人看见了你的锋芒。", { favor: 2, reputation: 2, suspicion: 2 }, { emperor: 2, empress: -1 }, ["exposed_yuying"], ["bold", "favor"], "yuying_after"),
@@ -161,7 +161,7 @@ const story = {
   },
   cassava_after: node("第六章 · 木薯粉宴", 55, "banquet", "曹琴默", "cao", "calm", "曹琴默低声道：莞嫔果然心细。你听得出这不是夸赞，而是一个善于观局的人在确认你究竟是哪一种对手。", "ally_1"),
   ally_1: {
-    chapter: "第七章 · 盟友受难", progress: 60, scene: "chamber", speaker: "流朱", portrait: "zhenhuan", mood: "angry",
+    chapter: "第七章 · 盟友受难", progress: 60, scene: "chamber", speaker: "流朱", portrait: "liuzhu", mood: "angry",
     text: "眉庄被指假孕争宠，禁足存菊堂。你手中只有一条不完整线索：太医曾在案发前被秘密调换。此时站出来，也许会把自己拖下水。",
     choices: [
       choice("当殿求情，愿以性命担保", "皇帝拂袖而去。情分保住了，翻案的机会却更远了。", { heart: 2, strategy: -2, favor: -1, health: -1, reputation: 1 }, { meizhuang: 4, emperor: -2 }, ["saved_ally_public"], ["help", "bold"], "ally_public"),
@@ -212,11 +212,11 @@ const scenePrologues = {
   ],
   first_choice: [
     { speaker: "旁白", portrait: "zhenhuan", mood: "calm", text: "新入宫的秀女被分别安置。沈眉庄与你自幼相识，端庄稳重；安陵容家世寒微，选秀时曾受你相助。" },
-    { speaker: "流朱", portrait: "zhenhuan", mood: "calm", text: "两边的人几乎同时到了门口。先迎谁，本是一件小事。可在宫里，小事最容易被记成态度。" }
+    { speaker: "流朱", portrait: "liuzhu", mood: "calm", text: "两边的人几乎同时到了门口。先迎谁，本是一件小事。可在宫里，小事最容易被记成态度。" }
   ],
   xia_conflict: [
     { speaker: "旁白", portrait: "lingrong", mood: "calm", text: "安陵容因衣料朴素，被家世优越的夏冬春当众奚落。她不敢还口，只能死死攥住袖口。" },
-    { speaker: "颂芝", portrait: "huafei", mood: "angry", text: "与此同时，宠冠后宫的华妃仪仗已经转入长街。若冲突惊扰了她，谁先开口，谁就可能先被拿来立威。" }
+    { speaker: "颂芝", portrait: "songzhi", mood: "angry", text: "与此同时，宠冠后宫的华妃仪仗已经转入长街。若冲突惊扰了她，谁先开口，谁就可能先被拿来立威。" }
   ],
   snow_1: [
     { speaker: "旁白", portrait: "zhenhuan", mood: "calm", text: "入宫后你故意称病避宠，只想远离争斗。除夕夜众人赴宴，你独自来到倚梅园，对着梅花许下心愿。" },
@@ -224,7 +224,7 @@ const scenePrologues = {
   ],
   yuying_1: [
     { speaker: "旁白", portrait: "lingrong", mood: "calm", text: "皇帝派人寻找雪夜里念诗的女子。宫女余莺儿恰巧听见线索，便冒认身份，一夜之间获封答应。" },
-    { speaker: "流朱", portrait: "zhenhuan", mood: "angry", text: "她现在唱着你的曲、念着你的诗，也享受着本可能属于你的荣宠。揭穿她能夺回真相，也会把你推到所有人面前。" }
+    { speaker: "流朱", portrait: "liuzhu", mood: "angry", text: "她现在唱着你的曲、念着你的诗，也享受着本可能属于你的荣宠。揭穿她能夺回真相，也会把你推到所有人面前。" }
   ],
   banquet_1: [
     { speaker: "旁白", portrait: "empress", mood: "calm", text: "宫宴既是取乐，也是试探。皇后与华妃表面和气，实际都在等新人站错位置。你的才名已经传入御前。" },
@@ -236,7 +236,7 @@ const scenePrologues = {
   ],
   ally_1: [
     { speaker: "旁白", portrait: "meizhuang", mood: "hidden", text: "沈眉庄曾因稳重得体率先得宠，也因此成为华妃的眼中钉。如今她被指假孕争宠，几乎所有证据都对她不利。" },
-    { speaker: "流朱", portrait: "zhenhuan", mood: "angry", text: "公开求情能证明情义，却可能让你一起失势；暗中调查需要时间；立刻切割最安全，也最伤人。" }
+    { speaker: "流朱", portrait: "liuzhu", mood: "angry", text: "公开求情能证明情义，却可能让你一起失势；暗中调查需要时间；立刻切割最安全，也最伤人。" }
   ],
   qigui_1: [
     { speaker: "旁白", portrait: "qigui", mood: "angry", text: "祺贵人投靠皇后后，一直寻找能将你彻底扳倒的证据。这一次，她把矛头指向你的孩子与宫外旧识。" },
@@ -244,7 +244,7 @@ const scenePrologues = {
   ],
   reveal_1: [
     { speaker: "旁白", portrait: "zhenhuan", mood: "calm", text: "纯元皇后是皇帝早逝的原配，也是皇后最不愿被提起的人。你曾被称赞的眉眼、嗓音与舞姿，都与她有几分相似。" },
-    { speaker: "流朱", portrait: "zhenhuan", mood: "angry", text: "这件旧衣若真属于纯元，你得到的偏爱便可能从一开始就不只属于你。穿或不穿，都会成为答案。" }
+    { speaker: "流朱", portrait: "liuzhu", mood: "angry", text: "这件旧衣若真属于纯元，你得到的偏爱便可能从一开始就不只属于你。穿或不穿，都会成为答案。" }
   ],
   final_1: [
     { speaker: "旁白", portrait: "emperor", mood: "angry", text: "多年争斗终于汇到同一座殿中。皇后仍握着名分，皇帝仍握着生死，而你握着一路留下的证据、情分和秘密。" },

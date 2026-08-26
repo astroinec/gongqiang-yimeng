@@ -112,6 +112,11 @@ h1 { margin: 0; font-size: clamp(48px, 13vw, 74px); font-weight: 500; letter-spa
 .portrait-cao .body, .portrait-cao .sleeve { background: #7a5a39; }
 .portrait-chun .body, .portrait-chun .sleeve { background: #b87882; }
 .portrait-qigui .body, .portrait-qigui .sleeve { background: #954b58; }
+.portrait-liuzhu .body, .portrait-liuzhu .sleeve { background: #6d7a8c; }
+.portrait-momo .body, .portrait-momo .sleeve { background: #4a4a52; }
+.portrait-xiadongchun .body, .portrait-xiadongchun .sleeve { background: #a85a2e; }
+.portrait-songzhi .body, .portrait-songzhi .sleeve { background: #7a3a42; }
+.portrait-yuyinger .body, .portrait-yuyinger .sleeve { background: #8a7a3a; }
 .mood-angry { transform: translateX(-50%) scale(1.04); }
 .mood-hidden { opacity: .18; transform: translateX(-50%) translateY(14px); }
 
