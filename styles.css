@@ -10,7 +10,7 @@
   --red: #9a3939;
   --red-dark: #5d2022;
   --jade: #56766b;
-  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px));
 }
 
 * { box-sizing: border-box; }
