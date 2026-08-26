@@ -117,6 +117,8 @@ h1 { margin: 0; font-size: clamp(48px, 13vw, 74px); font-weight: 500; letter-spa
 .portrait-xiadongchun .body, .portrait-xiadongchun .sleeve { background: #a85a2e; }
 .portrait-songzhi .body, .portrait-songzhi .sleeve { background: #7a3a42; }
 .portrait-yuyinger .body, .portrait-yuyinger .sleeve { background: #8a7a3a; }
+.portrait-zhenhuan_banquet .body, .portrait-zhenhuan_banquet .sleeve { background: #8e2f4a; }
+.portrait-zhenhuan_final .body, .portrait-zhenhuan_final .sleeve { background: #2e2a33; }
 .mood-angry { transform: translateX(-50%) scale(1.04); }
 .mood-hidden { opacity: .18; transform: translateX(-50%) translateY(14px); }
 

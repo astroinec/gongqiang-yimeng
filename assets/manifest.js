@@ -8,6 +8,8 @@ window.GONGQIANG_ASSETS = {
   },
   characters: {
     zhenhuan_calm: "assets/characters/zhenhuan_calm.webp",
+    zhenhuan_banquet_calm: "assets/characters/zhenhuan_banquet_calm.webp",
+    zhenhuan_final_calm: "assets/characters/zhenhuan_final_calm.webp",
     meizhuang_calm: "assets/characters/meizhuang_calm.webp",
     lingrong_calm: "assets/characters/lingrong_calm.webp",
     empress_calm: "assets/characters/empress_calm.webp",

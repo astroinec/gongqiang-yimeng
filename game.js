@@ -171,7 +171,7 @@ const story = {
   },
   ally_public: node("第七章 · 盟友受难", 64, "chamber", "皇帝", "emperor", "angry", "后宫之中最不值钱的，就是誓言。你与眉庄一同被禁足，至少门内还有一个人知道你没有舍弃她。", "qigui_1"),
   ally_secret: node("第七章 · 盟友受难", 64, "chamber", "眉庄", "meizhuang", "calm", "三日后，温实初送来一张药方，墨迹来自已经调任的太医。证据终于有了缺口。", "qigui_1"),
-  ally_abandon: node("第七章 · 盟友受难", 64, "chamber", "旁白", "zhenhuan", "hidden", "火光很暖，却照不亮心里那块空处。你保住了自己，也学会了胜利有时没有人可以分享。", "qigui_1"),
+  ally_abandon: node("第七章 · 盟友受难", 64, "chamber", "旁白", "zhenhuan_final", "hidden", "火光很暖，却照不亮心里那块空处。你保住了自己，也学会了胜利有时没有人可以分享。", "qigui_1"),
   qigui_1: {
     chapter: "第八章 · 滴血验亲", progress: 69, scene: "chamber", speaker: "祺贵人", portrait: "qigui", mood: "angry",
     text: "祺贵人捧着密信跪在殿前，指你私通外臣。皇后要滴血验亲，曹琴默悄悄避开你的目光，陵容则站在最远处。",
@@ -202,7 +202,7 @@ const story = {
       choice("低头认错，只求保住眼前圣眷", "你保住了今夜，也默认把未来交回那个人手中。", { favor: 2, heart: -2 }, { emperor: 2 }, ["chose_favor"], ["favor"], "resolve")
     ]
   },
-  resolve: { chapter: "终章 · 尘埃落定", progress: 100, scene: "final", speaker: "旁白", portrait: "zhenhuan", mood: "calm", text: "宫灯一盏盏熄灭。此前的每一次退让、试探、援手与背弃，都在此刻汇成了你的命运。", ending: true }
+  resolve: { chapter: "终章 · 尘埃落定", progress: 100, scene: "final", speaker: "旁白", portrait: "zhenhuan_final", mood: "calm", text: "宫灯一盏盏熄灭。此前的每一次退让、试探、援手与背弃，都在此刻汇成了你的命运。", ending: true }
 };
 
 const scenePrologues = {
@@ -227,6 +227,7 @@ const scenePrologues = {
     { speaker: "流朱", portrait: "liuzhu", mood: "angry", text: "她现在唱着你的曲、念着你的诗，也享受着本可能属于你的荣宠。揭穿她能夺回真相，也会把你推到所有人面前。" }
   ],
   banquet_1: [
+    { speaker: "旁白", portrait: "zhenhuan_banquet", mood: "calm", text: "你按新晋位份换上盛装。满殿觥筹交错，落在歌舞上的目光是假象，暗中称量你分量的目光才是真的。" },
     { speaker: "旁白", portrait: "empress", mood: "calm", text: "宫宴既是取乐，也是试探。皇后与华妃表面和气，实际都在等新人站错位置。你的才名已经传入御前。" },
     { speaker: "眉庄", portrait: "meizhuang", mood: "calm", text: "眉庄坐在不远处，手边正有一张琴。若你独自出头，可能赢得盛宠；若与她合作，荣耀便不只属于一人。" }
   ],
@@ -243,12 +244,12 @@ const scenePrologues = {
     { speaker: "皇后", portrait: "empress", mood: "calm", text: "所谓滴血验亲，看似是验证血缘，实则是一场早已布置好的审判。你能依靠的只有此前留下的人证与物证。" }
   ],
   reveal_1: [
-    { speaker: "旁白", portrait: "zhenhuan", mood: "calm", text: "纯元皇后是皇帝早逝的原配，也是皇后最不愿被提起的人。你曾被称赞的眉眼、嗓音与舞姿，都与她有几分相似。" },
+    { speaker: "旁白", portrait: "zhenhuan_final", mood: "calm", text: "纯元皇后是皇帝早逝的原配，也是皇后最不愿被提起的人。你曾被称赞的眉眼、嗓音与舞姿，都与她有几分相似。" },
     { speaker: "流朱", portrait: "liuzhu", mood: "angry", text: "这件旧衣若真属于纯元，你得到的偏爱便可能从一开始就不只属于你。穿或不穿，都会成为答案。" }
   ],
   final_1: [
     { speaker: "旁白", portrait: "emperor", mood: "angry", text: "多年争斗终于汇到同一座殿中。皇后仍握着名分，皇帝仍握着生死，而你握着一路留下的证据、情分和秘密。" },
-    { speaker: "甄嬛", portrait: "zhenhuan", mood: "calm", text: "你已经不能回到初入宫时。现在能决定的，是用这些筹码赢下权力、离开宫墙，还是把整张棋盘一并掀翻。" }
+    { speaker: "甄嬛", portrait: "zhenhuan_final", mood: "calm", text: "你已经不能回到初入宫时。现在能决定的，是用这些筹码赢下权力、离开宫墙，还是把整张棋盘一并掀翻。" }
   ]
 };
 
