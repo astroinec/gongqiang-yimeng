@@ -435,8 +435,6 @@ function unlockBgm() {
 
 function setBgmMuted(muted) {
   bgmMuted = muted;
-  el("mute-btn").classList.toggle("muted", muted);
-  el("mute-btn").textContent = muted ? "静" : "音";
   if (!bgm) return;
   if (muted) bgm.pause();
   else if (bgmStarted && bgmTrack) bgm.play().catch(() => {});
@@ -689,7 +687,6 @@ function startNewGame() {
 el("start-btn").onclick = () => { unlockBgm(); if (bgm) bgm.volume = 0.3; startNewGame(); };
 el("continue-btn").onclick = () => { unlockBgm(); loadGame(); renderNode(state.current); };
 el("restart-btn").onclick = () => { unlockBgm(); if (bgm) bgm.volume = 0.3; startNewGame(); };
-el("mute-btn").onclick = () => setBgmMuted(!bgmMuted);
 el("gallery-btn").onclick = renderGallery;
 el("ending-gallery-btn").onclick = renderGallery;
 el("gallery-home-btn").onclick = () => { updateContinueButton(); showScreen("title-screen"); };
