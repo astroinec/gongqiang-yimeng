@@ -444,6 +444,15 @@ function duckBgmForEnding() {
   if (bgm) bgm.volume = 0.14;
 }
 
+function dockPortrait() {
+  // 竖屏全屏出血布局：立绘底部锚定对白面板顶缘（微重叠，人物像站在面板后）
+  const portrait = el("portrait");
+  const landscape = window.matchMedia("(orientation: landscape) and (min-width: 720px)").matches;
+  if (landscape) { portrait.style.bottom = ""; return; }
+  const panel = document.querySelector(".dialogue-panel");
+  portrait.style.bottom = `${Math.max(0, panel.offsetHeight - 14)}px`;
+}
+
 function renderNode(id) {
   const currentNode = story[id];
   if (!currentNode) return;
@@ -453,6 +462,7 @@ function renderNode(id) {
   el("chapter-name").textContent = currentNode.chapter;
   el("progress-bar").style.width = `${currentNode.progress}%`;
   playBgmTrack(bgmForChapter(currentNode.chapter));
+  requestAnimationFrame(dockPortrait);
   el("scene").className = `scene scene-${currentNode.scene}`;
   setSceneArt(currentNode.scene);
   activeNode = currentNode;
@@ -473,6 +483,7 @@ function renderActivePage() {
   el("choices").innerHTML = "";
   el("next-btn").classList.add("hidden");
   typeText(page.text, () => {
+    requestAnimationFrame(dockPortrait);
     if (activePageIndex < activePages.length - 1) {
       el("next-btn").textContent = "继续";
       el("next-btn").classList.remove("hidden");
@@ -703,6 +714,8 @@ el("speed-btn").onclick = () => {
   instantText = !instantText;
   el("speed-btn").textContent = instantText ? "瞬显" : "逐字";
 };
+
+window.addEventListener("resize", dockPortrait);
 
 loadGame();
 updateContinueButton();
