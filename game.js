@@ -392,6 +392,60 @@ async function setSceneArt(sceneName) {
   }
 }
 
+// ==================== BGM：三幕切换 ====================
+const BGM_TRACKS = {
+  early: "./assets/audio/bgm_early.mp3",
+  mid: "./assets/audio/bgm_mid.mp3",
+  late: "./assets/audio/bgm_late.mp3"
+};
+let bgm = null;
+let bgmTrack = null;
+let bgmMuted = false;
+let bgmStarted = false;
+
+function bgmForChapter(chapter = "") {
+  if (/终章|第九章/.test(chapter)) return "late";
+  if (/第五章|第六章|第七章|第八章/.test(chapter)) return "mid";
+  return "early";
+}
+
+function ensureBgm() {
+  if (!bgm) {
+    bgm = new Audio();
+    bgm.loop = true;
+    bgm.volume = 0.3;
+    bgm.preload = "auto";
+  }
+}
+
+function playBgmTrack(track) {
+  ensureBgm();
+  if (bgmTrack === track) return;
+  bgmTrack = track;
+  bgm.src = BGM_TRACKS[track];
+  if (bgmStarted && !bgmMuted) bgm.play().catch(() => {});
+}
+
+function unlockBgm() {
+  // 必须在用户手势里调用（入局/继续按钮点击），之后章节切换才能自动播放
+  ensureBgm();
+  bgmStarted = true;
+  if (!bgmMuted && bgmTrack) bgm.play().catch(() => {});
+}
+
+function setBgmMuted(muted) {
+  bgmMuted = muted;
+  el("mute-btn").classList.toggle("muted", muted);
+  el("mute-btn").textContent = muted ? "静" : "音";
+  if (!bgm) return;
+  if (muted) bgm.pause();
+  else if (bgmStarted && bgmTrack) bgm.play().catch(() => {});
+}
+
+function duckBgmForEnding() {
+  if (bgm) bgm.volume = 0.14;
+}
+
 function renderNode(id) {
   const currentNode = story[id];
   if (!currentNode) return;
@@ -400,6 +454,7 @@ function renderNode(id) {
   showScreen("game-screen");
   el("chapter-name").textContent = currentNode.chapter;
   el("progress-bar").style.width = `${currentNode.progress}%`;
+  playBgmTrack(bgmForChapter(currentNode.chapter));
   el("scene").className = `scene scene-${currentNode.scene}`;
   setSceneArt(currentNode.scene);
   activeNode = currentNode;
@@ -565,6 +620,7 @@ function evaluateAchievements(context) {
 }
 
 function showEnding(key) {
+  duckBgmForEnding();
   const identity = endingIdentity(key);
   const unlocked = unlockStored(GALLERY_KEY, key);
   const newAchievements = evaluateAchievements({ ending: key, atEnding: true, unlockedEndings: unlocked.length });
@@ -630,12 +686,13 @@ function startNewGame() {
   renderNode(state.current);
 }
 
-el("start-btn").onclick = startNewGame;
-el("continue-btn").onclick = () => { loadGame(); renderNode(state.current); };
+el("start-btn").onclick = () => { unlockBgm(); if (bgm) bgm.volume = 0.3; startNewGame(); };
+el("continue-btn").onclick = () => { unlockBgm(); loadGame(); renderNode(state.current); };
+el("restart-btn").onclick = () => { unlockBgm(); if (bgm) bgm.volume = 0.3; startNewGame(); };
+el("mute-btn").onclick = () => setBgmMuted(!bgmMuted);
 el("gallery-btn").onclick = renderGallery;
 el("ending-gallery-btn").onclick = renderGallery;
 el("gallery-home-btn").onclick = () => { updateContinueButton(); showScreen("title-screen"); };
-el("restart-btn").onclick = startNewGame;
 el("home-btn").onclick = () => { saveGame(); updateContinueButton(); showScreen("title-screen"); };
 el("home-btn-fallback").onclick = () => { saveGame(); updateContinueButton(); showScreen("title-screen"); };
 el("stats-btn").onclick = () => { renderRumors(); el("stats-panel").classList.add("open"); el("stats-panel").setAttribute("aria-hidden", "false"); };
